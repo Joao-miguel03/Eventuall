@@ -1,0 +1,38 @@
+<body>
+    <div class="container mt-4">
+        <h1>Lista de Categorias</h1>
+        
+        {{#if error}}
+            <div class="alert alert-danger">
+                <strong>Erro:</strong> {{error}}
+            </div>
+        {{/if}}
+
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each categories}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.nome}}</td>
+                        <td>{{this.description}}</td>
+                        <td>
+                            <a href="/categories/{{this.id}}" class="btn btn-info btn-sm">Ver Detalhes</a>
+                            <form action="/categories/{{this.id}}/delete" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <a href="/categories/create" class="btn btn-primary mt-3">Criar Nova Categoria</a>
+    </div>
+</body>
