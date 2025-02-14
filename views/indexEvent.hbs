@@ -1,0 +1,61 @@
+<body>
+    <div class="container mt-4">
+        <h1>Lista de Eventos</h1>
+
+        {{#if error}}
+            <div class="alert alert-danger">
+                <strong>Erro:</strong> {{error}}
+            </div>
+        {{/if}}
+
+        <!-- Tabela de eventos para todos os usuários -->
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Local</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Criado por</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each events}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.title}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.location}}</td>
+                        <td>
+                            {{#each ../categories}}
+                                {{#if (eq this.id ../this.category)}}
+                                    {{this.nome}}
+                                {{/if}}
+                            {{/each}}
+                        </td>
+                        <td>
+                            {{#each ../users}}
+                                {{#if (eq this.id ../this.createdBy)}}
+                                    {{this.name}}
+                                {{/if}}
+                            {{/each}}
+                        </td>
+                        <td>
+                            <a href="/events/{{this.id}}" class="btn btn-info btn-sm">Ver Detalhes</a>
+                            
+                            <form action="/events/{{this.id}}/delete" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+
+
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <a href="/events/create" class="btn btn-primary mt-3">Criar Novo Evento</a>
+    </div>
+</body>

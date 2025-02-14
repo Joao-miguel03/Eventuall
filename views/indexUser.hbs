@@ -1,0 +1,38 @@
+<body>
+    <div class="container mt-4">
+        <h1>Lista de Usuários</h1>
+
+        {{#if error}}
+            <div class="alert alert-danger">
+                <strong>Erro:</strong> {{error}}
+            </div>
+        {{/if}}
+
+        <!-- Tabela de usuários -->
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>
+                            <a href="/users/{{this.id}}" class="btn btn-info btn-sm">Ver Detalhes</a>
+                            <form action="/users/{{this.id}}/delete" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <a href="/users/register" class="btn btn-primary mt-3">Criar Novo Usuário</a>
+    </div>
+</body>

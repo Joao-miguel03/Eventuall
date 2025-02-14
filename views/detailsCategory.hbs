@@ -1,0 +1,44 @@
+<body>
+    <div class="container mt-4">
+        <h1>Detalhes da Categoria</h1>
+        
+        <p><strong>Nome:</strong> {{category.nome}}</p>
+        <p><strong>Descrição:</strong> {{category.description}}</p>
+        <p><strong>Ícone:</strong> {{category.icon}}</p>
+        <p><strong>Cor:</strong> {{category.color}}</p>
+        <p><strong>Restrição de Idade:</strong> {{category.age_restriction}}</p>
+        
+        <!-- Formulário de edição -->
+        <form action="/categories/{{category.id}}/edit" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{category.nome}}" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="description" name="description" value="{{category.description}}">
+            </div>
+            <div class="mb-3">
+                <label for="icon" class="form-label">Ícone</label>
+                <input type="text" class="form-control" id="icon" name="icon" value="{{category.icon}}">
+            </div>
+            <div class="mb-3">
+                <label for="color" class="form-label">Cor</label>
+                <input type="text" class="form-control" id="color" name="color" value="{{category.color}}">
+            </div>
+            <div class="mb-3">
+                <label for="age_restriction" class="form-label">Restrição de Idade</label>
+                <input type="number" class="form-control" id="age_restriction" name="age_restriction" value="{{category.age_restriction}}">
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </form>
+
+        <!-- Formulário de deleção -->
+        <form action="/categories/{{category.id}}/delete" method="POST" class="mt-3">
+            <button type="submit" class="btn btn-danger">Deletar Categoria</button>
+        </form>
+
+        <!-- Botão para voltar -->
+        <a href="/categories" class="btn btn-secondary mt-3">Voltar para a Lista</a>
+    </div>
+</body>

@@ -1,0 +1,28 @@
+<body>
+    <div class="container mt-4">
+        <h1>Criar Nova Categoria</h1>
+        <form action="/categories/create" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="description" name="description">
+            </div>
+            <div class="mb-3">
+                <label for="icon" class="form-label">Ícone</label>
+                <input type="text" class="form-control" id="icon" name="icon">
+            </div>
+            <div class="mb-3">
+                <label for="color" class="form-label">Cor</label>
+                <input type="text" class="form-control" id="color" name="color">
+            </div>
+            <div class="mb-3">
+                <label for="age_restriction" class="form-label">Restrição de Idade</label>
+                <input type="number" class="form-control" id="age_restriction" name="age_restriction">
+            </div>
+            <button type="submit" class="btn btn-success">Criar</button>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,17 @@
+<body>
+    <h1>Bem-vindo ao Eventuall</h1>
+    <p>Organize e participe dos melhores eventos de forma simples e rápida.</p>
+
+    {{#if isLoggedIn}}
+        <p class="lead">Olá, <strong>{{user.name}}</strong>! Você está logado como <strong>{{user.role}}</strong>.</p>
+        <a href="/events" class="btn btn-success">Ver Eventos</a><br>
+        
+        {{#if (eq user.role "admin")}}
+            <a href="/categories" class="btn btn-success">Ver Categorias</a>
+        {{/if}}
+    {{else}}
+        <p class="lead">Junte-se a nós agora mesmo!</p>
+        <a href="/users/register" class="btn btn-primary btn-lg">Registrar Agora</a>
+        <a href="/users/login" class="btn btn-secondary btn-lg">Fazer Login</a>
+    {{/if}}
+</body>
